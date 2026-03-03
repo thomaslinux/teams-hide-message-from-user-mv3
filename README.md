@@ -8,7 +8,7 @@ Clone the repository or [download the zip](https://github.com/thomaslinux/teams-
 
 Go to this adress :
 
-chrome://extensions/
+[chrome://extensions](chrome://extensions)
 
 Drag and drop the extracted zip / folder of the extension.
 
