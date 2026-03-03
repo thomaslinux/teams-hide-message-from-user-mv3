@@ -3,13 +3,12 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://teams.cloud.microsoft/*
 // @grant       none
-// @version     1.0
+// @version     2026.03.03.14.05
 // @author      thomaslinux9 && perplexity.ai
-// @description 03/03/2026 11:38:20
+// @description 03/03/2026 14:05:00
 // @run-at      document-idle
 // ==/UserScript==
 
-// add a user familyname in the hideUsers list to hide the user
 const hideUsers = ["USER1", "USER2"];
 
 window.addEventListener("load", () => {
@@ -21,7 +20,7 @@ window.addEventListener("load", () => {
       (u) =>
         `div[class*="fui-ChatMessage"]:has(img[src*="${u}"]) div[data-message-content]`,
     )
-    .join(",\\n");
+    .join(",\n");
 
   const style = document.createElement("style");
   style.textContent = `
