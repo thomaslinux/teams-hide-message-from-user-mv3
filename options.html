@@ -6,13 +6,14 @@
 </head>
 
 <body>
-    <h1>Hidden Users</h1>
-    <label>
+    <h1>Users to hide</h1>
+    <label style="display:none">
         <input type="checkbox" id="toggleEnable" />
         Enable hiding globally
     </label>
     <ul id="userList"></ul>
-    <input id="newUser" placeholder="Add username..." />
+    <label for="newUser">FAMILYNAME of user</label>
+    <input id="newUser" placeholder="FAMILYNAME" />
     <button id="addBtn">Add</button>
 
     <script src="options.js"></script>
