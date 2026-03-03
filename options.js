@@ -1,12 +1,12 @@
 const userInput = document.getElementById("userInput");
 const addUserBtn = document.getElementById("addUser");
-const userList = document.getElementById("userList");
+const userTableBody = document.querySelector("#userTable tbody");
 const modeRadios = document.querySelectorAll('input[name="mode"]');
 
 chrome.storage.sync.get(
   ["hideUsers", "hideMode"],
   ({ hideUsers = [], hideMode = "content" }) => {
-    updateUI(hideUsers);
+    renderTable(hideUsers);
     setMode(hideMode);
   },
 );
@@ -50,41 +50,36 @@ function setMode(mode) {
 function saveToStorage(hideUsers) {
   const hideMode = document.querySelector('input[name="mode"]:checked').value;
   chrome.storage.sync.set({ hideUsers, hideMode });
-  updateUI(hideUsers);
+  renderTable(hideUsers);
   updateContentScript(hideUsers, hideMode);
 }
 
-function updateUI(hideUsers) {
-  userList.innerHTML = "";
+function renderTable(hideUsers) {
+  userTableBody.innerHTML = "";
   hideUsers.forEach(({ name, enabled }) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <label>
-        <input type="checkbox" ${enabled ? "checked" : ""} />
-        ${name}
-      </label>
-      <button class="remove">x</button>
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${name}</td>
+      <td><input type="checkbox" ${enabled ? "checked" : ""}></td>
+      <td><button class="remove">x</button></td>
     `;
-    li.querySelector("input").addEventListener("change", () =>
-      toggleUser(name),
-    );
-    li.querySelector(".remove").addEventListener("click", () =>
-      removeUser(name),
-    );
-    userList.appendChild(li);
+
+    row
+      .querySelector("input")
+      .addEventListener("change", () => toggleUser(name));
+    row
+      .querySelector(".remove")
+      .addEventListener("click", () => removeUser(name));
+
+    userTableBody.appendChild(row);
   });
 }
 
 function saveChanges() {
-  chrome.storage.sync.get(
-    ["hideUsers", "hideMode"],
-    ({ hideUsers = [], hideMode = "content" }) => {
-      const newMode = document.querySelector(
-        'input[name="mode"]:checked',
-      ).value;
-      saveToStorage(hideUsers, newMode);
-    },
-  );
+  chrome.storage.sync.get(["hideUsers"], ({ hideUsers = [] }) => {
+    const hideMode = document.querySelector('input[name="mode"]:checked').value;
+    saveToStorage(hideUsers, hideMode);
+  });
 }
 
 function updateContentScript(hideUsers, hideMode) {
