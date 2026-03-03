@@ -56,20 +56,31 @@ async function removeUser(name) {
   renderList(updated);
 }
 
-addBtn.onclick = async () => {
+addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    addUser();
+  }
+});
+
+async function addUser() {
   const newUser = newUserEl.value.trim();
   if (!newUser) return;
+
   const { hideUsers = [] } = await browser.storage.sync.get("hideUsers");
+
   // Avoid duplicates
   if (hideUsers.some((u) => u.name === newUser)) {
     newUserEl.value = "";
     return;
   }
+
   const updated = [...hideUsers, { name: newUser, hidden: true }];
   await browser.storage.sync.set({ hideUsers: updated });
   renderList(updated);
   newUserEl.value = "";
-};
+}
+
+addBtn.onclick = addUser;
 
 toggleEl.onchange = async () => {
   await browser.storage.sync.set({ enabled: toggleEl.checked });
