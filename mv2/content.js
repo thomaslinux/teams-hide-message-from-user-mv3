@@ -52,6 +52,15 @@ function applyCSS() {
     `;
   }
 
+  if (document.querySelector("html").className.includes("dark")) {
+    css += ` 
+      .fui-FluentProviderr0 {
+        --messageColor: #000000a1 !important;
+        --colorNeutralCardBackground: var(--messageColor);
+        --colorNeutralBackground1: var(--messageColor);
+      }`;
+  }
+
   style.textContent = css;
 }
 
