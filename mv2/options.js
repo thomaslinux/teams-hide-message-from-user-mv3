@@ -51,6 +51,13 @@ addUserBtn.addEventListener("click", () => {
   saveOptions();
 });
 
+usernameInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addUserBtn.click();
+  }
+});
+
 masterEnable.addEventListener("change", saveOptions);
 document
   .querySelectorAll("input[name=mode]")
