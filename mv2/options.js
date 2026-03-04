@@ -78,24 +78,15 @@ function renderBgTable() {
   bgTable.innerHTML = "";
   container.innerHTML = "";
 
-  if (!backgrounds.length) {
-    const btn = document.createElement("button");
-    btn.textContent = "Restore Default Backgrounds";
-    btn.addEventListener("click", () => {
-      backgrounds = JSON.parse(JSON.stringify(DEFAULT_BACKGROUNDS));
-      browser.storage.local.set({ backgrounds }).then(renderBgTable);
-    });
-    container.appendChild(btn);
-    return;
-  }
-
   backgrounds.forEach((bg, i) => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td><input type="radio" name="bgSelect" id="${i}" data-index="${i}" ${bg.active ? "checked" : ""}></td>
       <td style="word-break: break-all;"><label for="${i}">${bg.url}</label></td>
-      <td><button data-remove="${i}">Remove</button></td>
     `;
+    bg.url !== "none"
+      ? (row.innerHTML += `<td><button data-remove="${i}">Remove</button></td>`)
+      : (row.innerHTML += "<td></td>");
     bgTable.appendChild(row);
   });
 }
