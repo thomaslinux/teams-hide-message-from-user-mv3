@@ -82,7 +82,7 @@ function renderBgTable() {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td><input type="radio" name="bgSelect" id="${i}" data-index="${i}" ${bg.active ? "checked" : ""}></td>
-      <td style="word-break: break-all;"><label for="${i}">${bg.url}</label></td>
+      <td class="url"><label for="${i}">${bg.url}</label></td>
     `;
     bg.url !== "none"
       ? (row.innerHTML += `<td><button data-remove="${i}">Remove</button></td>`)
