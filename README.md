@@ -1,6 +1,6 @@
-# Chrome extension to hide messages from Teams users
+# Extension to hide messages from specific Teams users
 
-A chrome extension to hide messages from Teams users. Download zip and load in chrome developer mode.
+An extension to hide messages from specific Teams users.
 
 # Features
 
@@ -20,15 +20,15 @@ Clone the repository or [download the zip](https://github.com/thomaslinux/teams-
 
 Go to this adress :
 
-[chrome://extensions](chrome://extensions)
+`chrome://extensions`
 
 Drag and drop the extracted zip / folder of the extension.
 
 ## Testing on Firefox
 
-about:debugging#/runtime/this-firefox
+`about:debugging#/runtime/this-firefox`
 
-drag and drop the folder
+drag and drop the mv2 folder in Firefox
 
 ## Installation on Firefox
 
