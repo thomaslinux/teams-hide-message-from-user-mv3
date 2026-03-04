@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hide Users Settings</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        input {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Hide Users Configuration</h2>
+    <div>
+        <input type="text" id="username" placeholder="Enter username" />
+        <button id="addUser">Add</button>
+        <label><input type="checkbox" id="masterEnable"> Enable hiding</label>
+        <label>
+            <input type="radio" name="mode" value="content" checked> Hide content only
+        </label>
+        <label>
+            <input type="radio" name="mode" value="message"> Hide entire message
+        </label>
+    </div>
+
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>Family Name</th>
+                <th>Hide</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="options.js"></script>
+</body>
+
+</html>
