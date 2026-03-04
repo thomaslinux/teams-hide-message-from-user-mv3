@@ -38,7 +38,22 @@ function applyCSS() {
   }
 
   const selector = buildSelector();
-  let css = selector ? `${selector} { display: none !important; }` : "";
+  let css = "";
+  if (hideMode !== "onlymessage") {
+    css = selector
+      ? `${selector} { 
+        display: none !important; 
+      }
+    `
+      : "";
+  } else {
+    css = selector
+      ? `${selector} { display: inherit !important; } 
+      div[class*="fui-ChatMessage"]:has(img) {
+        display: none !important;
+      }`
+      : "";
+  }
 
   const bgUrl = getActiveBgUrl();
   if (bgUrl) {
