@@ -1,6 +1,7 @@
 let hideUsers = [];
 let hideMode = "content";
 let hideMyMessages = false;
+let bgUrl = "";
 
 function buildSelector() {
   const base =
@@ -28,17 +29,29 @@ function applyCSS() {
   }
 
   const selector = buildSelector();
-  style.textContent = selector
-    ? `${selector} { display: none !important; }`
-    : "";
+  let css = selector ? `${selector} { display: none !important; }` : "";
+
+  if (bgUrl) {
+    css += `
+      .ui-flex.a.b.c.d.i.j.k.l.m.n {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('${bgUrl}');
+      }
+    `;
+  }
+
+  style.textContent = css;
 }
 
 browser.storage.local
-  .get(["hideUsers", "hideMode", "hideMyMessages"])
+  .get(["hideUsers", "hideMode", "hideMyMessages", "bgUrl"])
   .then((res) => {
     hideUsers = res.hideUsers || [];
     hideMode = res.hideMode || "content";
     hideMyMessages = res.hideMyMessages || false;
+    bgUrl = res.bgUrl || "";
     applyCSS();
   });
 
@@ -46,5 +59,6 @@ browser.storage.onChanged.addListener((changes) => {
   if (changes.hideUsers) hideUsers = changes.hideUsers.newValue;
   if (changes.hideMode) hideMode = changes.hideMode.newValue;
   if (changes.hideMyMessages) hideMyMessages = changes.hideMyMessages.newValue;
+  if (changes.bgUrl) bgUrl = changes.bgUrl.newValue;
   applyCSS();
 });

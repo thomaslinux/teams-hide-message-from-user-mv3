@@ -85,3 +85,23 @@ browser.storage.local
     hideMyMessagesCheckbox.checked = res.hideMyMessages || false;
     renderTable();
   });
+
+const bgUrlInput = document.getElementById("bgUrl");
+
+bgUrlInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    const url = bgUrlInput.value.trim();
+    browser.storage.local.set({ bgUrl: url });
+  }
+});
+
+browser.storage.local
+  .get(["hideUsers", "hideMode", "hideMyMessages", "bgUrl"])
+  .then((res) => {
+    hideUsers = res.hideUsers || [];
+    hideMode = res.hideMode || "content";
+    hideMyMessagesCheckbox.checked = res.hideMyMessages || false;
+    bgUrlInput.value = res.bgUrl || "";
+    document.querySelector(`input[value=${hideMode}]`).checked = true;
+    renderTable();
+  });
