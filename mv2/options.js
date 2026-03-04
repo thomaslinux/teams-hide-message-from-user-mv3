@@ -66,3 +66,22 @@ browser.storage.local.get(["hideUsers", "hideMode"]).then((res) => {
   document.querySelector(`input[value=${hideMode}]`).checked = true;
   renderTable();
 });
+
+const hideMyMessagesCheckbox = document.getElementById("hideMyMessages");
+
+// Save when user toggles the checkbox
+hideMyMessagesCheckbox.addEventListener("change", () => {
+  browser.storage.local.set({ hideMyMessages: hideMyMessagesCheckbox.checked });
+});
+
+// Load saved setting at startup
+browser.storage.local
+  .get(["hideUsers", "hideMode", "hideMyMessages"])
+  .then((res) => {
+    hideUsers = res.hideUsers || [];
+    hideMode = res.hideMode || "content";
+    document.querySelector(`input[value=${hideMode}]`).checked = true;
+
+    hideMyMessagesCheckbox.checked = res.hideMyMessages || false;
+    renderTable();
+  });
