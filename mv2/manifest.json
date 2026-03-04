@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
-  "name": "Hide Specific Users",
+  "name": "Hide Teams Users Messages",
   "version": "1.0",
   "description": "Hide messages from specific users in chat.",
   "permissions": ["storage", "activeTab"],
   "browser_action": {
     "default_popup": "options.html",
-    "default_title": "Hide Users"
+    "default_title": "Hide Teams Users Messages"
   },
   "content_scripts": [
     {
