@@ -30,8 +30,20 @@
 </head>
 
 <body>
-    <h3>Hide Users</h3>
-    <input type="text" id="newUser" placeholder="Enter user ID..." />
+    <h3>Teams Hide Users</h3>
+
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>FAMILYNAME</th>
+                <th>Hide</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <input type="text" id="newUser" placeholder="FAMILYNAME" />
     <button id="addUser">Add</button>
 
     <div>
@@ -39,22 +51,12 @@
             <input type="radio" name="mode" value="content" checked>
             Hide message content only
         </label>
+        <br>
         <label>
             <input type="radio" name="mode" value="message">
             Hide entire message
         </label>
     </div>
-
-    <table id="usersTable">
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Hide</th>
-                <th>Remove</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
 
     <script src="options.js"></script>
 </body>
