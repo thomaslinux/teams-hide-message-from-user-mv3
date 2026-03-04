@@ -12,9 +12,26 @@ Go to this adress :
 
 Drag and drop the extracted zip / folder of the extension.
 
-# Firefox
+## Testing on Firefox
 
-Work in progress.
+about:debugging#/runtime/this-firefox
+
+drag and drop the folder
+
+## Installation on Firefox
+
+Go to `about:config` and set `xpinstall.signatures.required` to `false`
+
+zip the content of the mv2 folder, so the structure is
+
+mv2
+|-manifest.json
+|-options.html
+|-...
+
+manifest.json and others are at the root of the archive.
+
+Go to `about:addons`, and drag and drop the mv2.zip
 
 # Alternative
 
