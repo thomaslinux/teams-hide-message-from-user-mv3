@@ -59,7 +59,7 @@
     </div>
 
     <div>
-        <strong>My Messages:</strong><br>
+        <h4>My Messages:</h4><br>
         <label>
             <input type="radio" name="myMessagesMode" value="none" checked>
             Normal (show all)
@@ -75,10 +75,20 @@
     </div>
 
     <div>
-        <label>
-            Background image URL:
-            <input type="text" id="bgUrl" placeholder="Enter image URL and press Enter" />
-        </label>
+        <h4>Background Images</h4>
+        <input type="text" id="newBgUrl" placeholder="Enter background URL and press Enter" />
+        <button id="addBgUrl">Add</button>
+
+        <table id="bgTable">
+            <thead>
+                <tr>
+                    <th>Use</th>
+                    <th>Background URL</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 
     <script src="options.js"></script>

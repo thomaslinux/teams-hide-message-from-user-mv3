@@ -1,7 +1,7 @@
 let hideUsers = [];
 let hideMode = "content";
 let myMessagesMode = "none";
-let bgUrl = "";
+let backgrounds = []; // stored list of {url, active}
 
 function buildSelector() {
   const base =
@@ -24,6 +24,11 @@ function buildSelector() {
   return selectors.join(",\n");
 }
 
+function getActiveBgUrl() {
+  const active = backgrounds.find((b) => b.active);
+  return active ? active.url : "";
+}
+
 function applyCSS() {
   let style = document.getElementById("hideUsersStyle");
   if (!style) {
@@ -35,6 +40,7 @@ function applyCSS() {
   const selector = buildSelector();
   let css = selector ? `${selector} { display: none !important; }` : "";
 
+  const bgUrl = getActiveBgUrl();
   if (bgUrl) {
     css += `
       .ui-flex.a.b.c.d.i.j.k.l.m.n {
@@ -50,12 +56,12 @@ function applyCSS() {
 }
 
 browser.storage.local
-  .get(["hideUsers", "hideMode", "myMessagesMode", "bgUrl"])
+  .get(["hideUsers", "hideMode", "myMessagesMode", "backgrounds"])
   .then((res) => {
     hideUsers = res.hideUsers || [];
     hideMode = res.hideMode || "content";
     myMessagesMode = res.myMessagesMode || "none";
-    bgUrl = res.bgUrl || "";
+    backgrounds = res.backgrounds || [];
     applyCSS();
   });
 
@@ -63,6 +69,6 @@ browser.storage.onChanged.addListener((changes) => {
   if (changes.hideUsers) hideUsers = changes.hideUsers.newValue;
   if (changes.hideMode) hideMode = changes.hideMode.newValue;
   if (changes.myMessagesMode) myMessagesMode = changes.myMessagesMode.newValue;
-  if (changes.bgUrl) bgUrl = changes.bgUrl.newValue;
+  if (changes.backgrounds) backgrounds = changes.backgrounds.newValue;
   applyCSS();
 });

@@ -67,24 +67,74 @@ browser.storage.local.get(["hideUsers", "hideMode"]).then((res) => {
   renderTable();
 });
 
-const bgUrlInput = document.getElementById("bgUrl");
+const bgUrlInput = document.getElementById("newBgUrl");
+const addBgUrlBtn = document.getElementById("addBgUrl");
+const bgTable = document.querySelector("#bgTable tbody");
 
-bgUrlInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    const url = bgUrlInput.value.trim();
-    browser.storage.local.set({ bgUrl: url });
+let backgrounds = []; // [{url:"https://...", active:true}, ...]
+
+function renderBgTable() {
+  bgTable.innerHTML = "";
+  backgrounds.forEach((bg, i) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><input type="radio" name="bgSelect" data-index="${i}" ${bg.active ? "checked" : ""}></td>
+      <td>${bg.url}</td>
+      <td><button data-remove="${i}">Remove</button></td>
+    `;
+    bgTable.appendChild(row);
+  });
+}
+
+function saveBackgrounds() {
+  browser.storage.local.set({ backgrounds });
+}
+
+addBgUrlBtn.addEventListener("click", () => {
+  const url = bgUrlInput.value.trim();
+  if (url && !backgrounds.some((b) => b.url === url)) {
+    backgrounds.push({ url, active: false });
+    saveBackgrounds();
+    renderBgTable();
+    bgUrlInput.value = "";
   }
 });
 
+bgUrlInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") addBgUrlBtn.click();
+});
+
+bgTable.addEventListener("click", (e) => {
+  const idx = e.target.dataset.remove;
+  if (idx !== undefined) {
+    backgrounds.splice(idx, 1);
+    saveBackgrounds();
+    renderBgTable();
+  }
+});
+
+bgTable.addEventListener("change", (e) => {
+  const idx = e.target.dataset.index;
+  if (idx !== undefined) {
+    backgrounds.forEach((b, i) => (b.active = i == idx));
+    saveBackgrounds();
+  }
+});
+
+// Include backgrounds in your initial load
 browser.storage.local
-  .get(["hideUsers", "hideMode", "hideMyMessages", "bgUrl"])
+  .get(["hideUsers", "hideMode", "myMessagesMode", "backgrounds"])
   .then((res) => {
     hideUsers = res.hideUsers || [];
     hideMode = res.hideMode || "content";
-    hideMyMessagesCheckbox.checked = res.hideMyMessages || false;
-    bgUrlInput.value = res.bgUrl || "";
-    document.querySelector(`input[value=${hideMode}]`).checked = true;
+    myMessagesMode = res.myMessagesMode || "none";
+    backgrounds = res.backgrounds || [];
     renderTable();
+    renderBgTable();
+    const mode = res.myMessagesMode || "none";
+    document.querySelector(
+      `input[name='myMessagesMode'][value='${mode}']`,
+    ).checked = true;
   });
 
 const myMessagesRadios = document.querySelectorAll(
