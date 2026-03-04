@@ -1,6 +1,7 @@
 # Extension to hide messages from specific Teams users
 
 An extension to hide messages from specific Teams users.
+Tested by me, most code written by perplexity.
 
 # Features
 
@@ -50,3 +51,25 @@ Go to `about:addons`, and drag and drop the mv2.zip
 You can install and use the userstyle on Firefox and Chrome :
 
 https://userstyles.world/style/26699/tl9-teams-hide-messages-from-user
+
+# History
+
+## Intro
+
+I wanted to hide users in Teams, so I made a CSS selector to hide them. Style still exists on userstyles.world if you want to use it.
+
+I wanted to make an extension to have an easier way to add and remove user to hide.
+
+## Implementing
+
+Making an extension directly was impossible. ChatGPT was not giving working results and my duck.ai credits ran out that day.
+
+So I tried perplexity. It gave me an extension with a working interface, but the logic wasn't there.
+
+## UserScript
+
+So I started by making a userscript. If the code works in the console, we could then reuse that working code to build the extension.
+
+### Why not inline styling ? But CSS ?
+
+Because we scroll conversations, I would need to run the logic for every scroll. Which is a pain. So I decided to inject the CSS in the HTML, like stylus is doing (style is working).
