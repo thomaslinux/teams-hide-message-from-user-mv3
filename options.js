@@ -58,7 +58,13 @@ function renderUsers() {
       users[index] = { ...users[index], enabled: chk.checked };
       saveState({ users });
     });
-    tdHide.appendChild(chk);
+
+    const hideLabel = document.createElement("label");
+    hideLabel.setAttribute("for", checkboxId);
+    hideLabel.style.display = "inline-block";
+    hideLabel.style.width = "100%";
+    hideLabel.appendChild(chk);
+    tdHide.appendChild(hideLabel);
     tr.appendChild(tdHide);
 
     const tdRemove = document.createElement("td");
@@ -108,12 +114,20 @@ function renderBackgrounds() {
     radio.addEventListener("change", () => {
       saveState({ activeBackgroundUrl: url });
     });
-    tdUse.appendChild(radio);
+
+    const useLabel = document.createElement("label");
+    useLabel.setAttribute("for", radioId);
+    useLabel.style.display = "inline-block";
+    useLabel.style.width = "100%";
+    useLabel.appendChild(radio);
+    tdUse.appendChild(useLabel);
     tr.appendChild(tdUse);
 
     const tdUrl = document.createElement("td");
     const urlLabel = document.createElement("label");
     urlLabel.setAttribute("for", radioId);
+    urlLabel.style.display = "inline-block";
+    urlLabel.style.width = "100%";
     urlLabel.textContent = url;
     tdUrl.appendChild(urlLabel);
     tr.appendChild(tdUrl);
