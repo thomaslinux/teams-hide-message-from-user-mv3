@@ -81,11 +81,11 @@ function renderBgTable() {
   backgrounds.forEach((bg, i) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-    <td>
-      <label style="display:block;cursor:pointer">
-        <input type="radio" name="bgSelect" id="bg-${i}" data-index="${i}" ${bg.active ? "checked" : ""}>
-        <span>${bg.url}</span>
-      </label>
+    <td class="select-cell">
+      <input type="radio" name="bgSelect" id="bg-${i}" data-index="${i}" ${bg.active ? "checked" : ""}>
+    </td>
+    <td class="url">
+      <label for="bg-${i}">${bg.url}</label>
     </td>
     ${
       bg.url !== "none"
