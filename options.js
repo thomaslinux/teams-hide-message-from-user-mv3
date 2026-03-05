@@ -1,6 +1,7 @@
 // Manages options UI and stores settings in chrome.storage.sync
 
 const DEFAULT_BG_URLS = [
+  "none",
   "https://unsplash.com/photos/m35LirqP6y8/download?&h=1280",
   "https://unsplash.com/photos/OVO8nK-7Rfs/download?&h=1280",
   "https://unsplash.com/photos/PZMeVJwCTFM/download?&h=1280",

@@ -95,7 +95,7 @@ function buildMyMessagesCss(myMode) {
 }
 
 function buildBackgroundCss(currentBgUrl) {
-  if (!currentBgUrl) return "";
+  if (!currentBgUrl || currentBgUrl == "none") return "";
   const url = currentBgUrl.replace(/"/g, '\\"');
   return `
     .ui-flex.a.b.c.d.i.j.k.l.m.n {
