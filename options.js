@@ -39,13 +39,19 @@ function renderUsers() {
   state.users.forEach((u, index) => {
     const tr = document.createElement("tr");
 
+    const checkboxId = `user-hide-${index}`;
+
     const tdName = document.createElement("td");
-    tdName.textContent = u.name;
+    const nameLabel = document.createElement("label");
+    nameLabel.setAttribute("for", checkboxId);
+    nameLabel.textContent = u.name;
+    tdName.appendChild(nameLabel);
     tr.appendChild(tdName);
 
     const tdHide = document.createElement("td");
     const chk = document.createElement("input");
     chk.type = "checkbox";
+    chk.id = checkboxId;
     chk.checked = !!u.enabled;
     chk.addEventListener("change", () => {
       const users = [...state.users];
@@ -91,10 +97,13 @@ function renderBackgrounds() {
   state.backgroundUrls.forEach((url, index) => {
     const tr = document.createElement("tr");
 
+    const radioId = `bg-use-${index}`;
+
     const tdUse = document.createElement("td");
     const radio = document.createElement("input");
     radio.type = "radio";
     radio.name = "bgUse";
+    radio.id = radioId;
     radio.checked = url === state.activeBackgroundUrl;
     radio.addEventListener("change", () => {
       saveState({ activeBackgroundUrl: url });
@@ -103,7 +112,10 @@ function renderBackgrounds() {
     tr.appendChild(tdUse);
 
     const tdUrl = document.createElement("td");
-    tdUrl.textContent = url;
+    const urlLabel = document.createElement("label");
+    urlLabel.setAttribute("for", radioId);
+    urlLabel.textContent = url;
+    tdUrl.appendChild(urlLabel);
     tr.appendChild(tdUrl);
 
     const tdRemove = document.createElement("td");

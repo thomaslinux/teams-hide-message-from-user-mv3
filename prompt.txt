@@ -58,3 +58,6 @@ default URLs to add :
  https://wallpaperaccess.com/full/8779679.jpg
 
 if functions are too long, extract in separate functions.
+
+table users td of FAMILYNAME should be label for the hide checkbox
+table background td of URL should be label for the USE Radio
