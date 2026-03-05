@@ -1,19 +1,18 @@
 # Extension to hide messages from specific Teams users
 
 An extension to hide messages from specific Teams users.
-Tested by me, most code written by perplexity.
+Based on my userstyles :
+https://userstyles.world/style/26699/tl9-teams-hide-messages-from-user
+https://userstyles.world/style/26886
+
+Made help from perplexity.ai
 
 # Features
 
-**All**
-
 - add / remove a user to hide
 - enable / disable hiding of a user
-
-**Firefox/mv2 only**
-
 - hide / show only my messages
-- add / remove a background image
+- add / remove a background image (better for darkmode)
 
 ## Installation on Chrome
 
