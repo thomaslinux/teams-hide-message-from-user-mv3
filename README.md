@@ -19,19 +19,21 @@ Made with [help](prompt.txt) from [perplexity.ai](https://perplexity.ai)
 - [x] hide / show only my messages
 - [x] add / remove a background image (better for darkmode)
 - [ ] Teams Dark like theme (https://microsoft.github.io/app-camp/aad/A03-after-apply-styling/)
-- [ ] Same Firefox and Chrome options.html (renaming the options.html values and options.js correspondances)
+- [ ] Same Firefox and Chrome options.html (renaming the options.html values and .js correspondances)
 
 ## Installation on Chrome
 
 Clone the repository or [download the zip](https://github.com/thomaslinux/teams-hide-message-from-user-mv3/archive/refs/heads/main.zip).
 
-Go to this adress :
+Open this link :
 
 `chrome://extensions`
 
 Drag and drop the extracted zip / folder of the extension.
 
 ## Testing on Firefox
+
+Open this link :
 
 `about:debugging#/runtime/this-firefox`
 
