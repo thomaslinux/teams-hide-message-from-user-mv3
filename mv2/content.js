@@ -1,11 +1,11 @@
 let hideUsers = [];
-let hideMode = "content";
+let hideMode = "hideContent";
 let myMessagesMode = "none";
 let backgrounds = []; // stored list of {url, active}
 
 function buildSelector() {
   const base =
-    hideMode === "content"
+    hideMode === "hideContent"
       ? `div[class*="fui-ChatMessage"]:has(img[src*="{{u}}"]) div[data-message-content]`
       : `div[class*="fui-ChatMessage"]:has(img[src*="{{u}}"])`;
 
@@ -84,7 +84,7 @@ browser.storage.local
   .get(["hideUsers", "hideMode", "myMessagesMode", "backgrounds"])
   .then((res) => {
     hideUsers = res.hideUsers || [];
-    hideMode = res.hideMode || "content";
+    hideMode = res.hideMode || "hideContent";
     myMessagesMode = res.myMessagesMode || "none";
     backgrounds = res.backgrounds || [];
     applyCSS();

@@ -3,7 +3,7 @@ const addUserBtn = document.getElementById("addUser");
 const usersTable = document.querySelector("#usersTable tbody");
 
 let hideUsers = [];
-let hideMode = "content";
+let hideMode = "hideContent";
 
 function renderTable() {
   usersTable.innerHTML = "";
@@ -62,7 +62,7 @@ document.querySelectorAll("input[name=userMode]").forEach((r) => {
 
 browser.storage.local.get(["hideUsers", "hideMode"]).then((res) => {
   hideUsers = res.hideUsers || [];
-  hideMode = res.hideMode || "content";
+  hideMode = res.hideMode || "hideContent";
   document.querySelector(`input[value=${hideMode}]`).checked = true;
   renderTable();
 });
@@ -137,7 +137,7 @@ browser.storage.local
   .get(["hideUsers", "hideMode", "myMessagesMode", "backgrounds"])
   .then((res) => {
     hideUsers = res.hideUsers || [];
-    hideMode = res.hideMode || "content";
+    hideMode = res.hideMode || "hideContent";
     myMessagesMode = res.myMessagesMode || "none";
     backgrounds = res.backgrounds || [];
     renderTable();
@@ -163,7 +163,7 @@ browser.storage.local
   .get(["hideUsers", "hideMode", "myMessagesMode", "bgUrl"])
   .then((res) => {
     hideUsers = res.hideUsers || [];
-    hideMode = res.hideMode || "content";
+    hideMode = res.hideMode || "hideContent";
     const mode = res.myMessagesMode || "none";
     document.querySelector(
       `input[name='myMessagesMode'][value='${mode}']`,
