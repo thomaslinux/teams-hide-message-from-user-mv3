@@ -8,10 +8,6 @@ https://userstyles.world/style/25421/tl9-teams-set-a-background-image-from-url
 
 Made with [help](prompt.txt) from [perplexity.ai](https://perplexity.ai)
 
-| Firefox interface           | Chrome interface           |
-| --------------------------- | -------------------------- |
-| ![](firefox-screenshot.png) | ![](chrome-screenshot.png) |
-
 # Features / TODO
 
 - [x] add / remove a user to hide
@@ -21,6 +17,12 @@ Made with [help](prompt.txt) from [perplexity.ai](https://perplexity.ai)
 - [ ] alias name for the background URL
 - [ ] Teams Dark like theme (https://microsoft.github.io/app-camp/aad/A03-after-apply-styling/)
 - [ ] Same Firefox and Chrome options.html (renaming the options.html values and options.js correspondances)
+
+# Screenshots
+
+| Firefox interface           | Chrome interface           |
+| --------------------------- | -------------------------- |
+| ![](firefox-screenshot.png) | ![](chrome-screenshot.png) |
 
 ## Installation on Chrome
 
