@@ -6,7 +6,7 @@ https://userstyles.world/style/26699/tl9-teams-hide-messages-from-user
 https://userstyles.world/style/26886
 https://userstyles.world/style/25421/tl9-teams-set-a-background-image-from-url
 
-Made help from perplexity.ai
+Made with [help from perplexity.ai](prompt.txt)
 
 ![a screenshot of the extension in firefox](firefox-screenshot.png)
 ![a screenshot of the extension in chrome](chrome-screenshot.png)
