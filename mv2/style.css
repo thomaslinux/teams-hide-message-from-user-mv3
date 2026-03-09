@@ -1,0 +1,49 @@
+body {
+    font-family: sans-serif;
+    padding: 10px;
+    width: 300px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background-color: antiquewhite;
+}
+
+td,
+th {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+}
+
+input[type="text"] {
+    width: 180px;
+}
+
+.url {
+    word-break: break-all;
+}
+
+label:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+td label {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+td input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    cursor: pointer;
+}
