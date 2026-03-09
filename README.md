@@ -8,38 +8,6 @@ https://userstyles.world/style/25421/tl9-teams-set-a-background-image-from-url
 
 Made with [help](prompt.txt) from [perplexity.ai](https://perplexity.ai)
 
-# Features / TODO / Roadmap
-
-## V0 - Alpha
-
-- [x] add / remove a user to hide
-- [-] enable / disable hiding of a user (work only for individual messages)
-- [x] hide / show only my messages
-- [x] add / remove a background image (better for darkmode)
-
-## V0.5 - Correct selector
-
-- [ ] Message selected with
-  - ( ) Author of the message information as an innerText (javascript)
-  - ( ) the author id in a span (css)
-
-## V1 - Initial release
-
-- [ ] Same Firefox and Chrome options.html (renaming the options.html values and .js correspondances)
-- [ ] alias name for the background URL
-- [ ] checkbox, show content on hover
-
-## V2 -
-
-- [ ] Teams like theme (https://microsoft.github.io/app-camp/aad/A03-after-apply-styling/)
-
-## V3 - Stylus alternative?
-
-- [ ] framework for inserting custom css
-- [ ] Linkedin block users and background edit port
-- [ ] editable css rules to insert
-- [ ] json save and interprating of the custom options to insert
-
 # Screenshots V0
 
 | Firefox interface           | Chrome interface           |
@@ -106,3 +74,44 @@ So I started by making a userscript. If the code works in the console, we could 
 ### Why not inline styling ? But CSS ?
 
 Because we scroll conversations, I would need to run the logic for every scroll. Which is a pain. So I decided to inject the CSS in the HTML, like stylus is doing (style is working).
+
+# Features / TODO / Roadmap
+
+## V0 - Alpha
+
+- [x] add / remove a user to hide
+- [-] enable / disable hiding of a user (work only for individual messages)
+- [x] hide / show only my messages
+- [x] add / remove a background image (better for darkmode)
+
+## V0.5 - Correct selector
+
+- [ ] Message selected with
+  - ( ) Author of the message information as an innerText (javascript)
+  - ( ) the author id in a span (css)
+
+## V1 - Initial release
+
+- [ ] Same Firefox and Chrome options.html (renaming the options.html values and .js correspondances)
+- [ ] alias name for the background URL
+- [ ] checkbox, show content on hover
+
+## V2 -
+
+- [ ] Teams like theme (https://microsoft.github.io/app-camp/aad/A03-after-apply-styling/)
+
+## V3 - Stylus alternative?
+
+- [ ] framework for inserting custom css
+- [ ] Linkedin block users and background edit port
+- [ ] editable css rules to insert
+- [ ] json save and interprating of the custom options to insert
+
+# Userscript version
+
+## V0
+
+- [ ] Right click indicates right clicks without breaking normal Teams right click
+- [ ] add a button next to the username to block that user
+
+- [ ] Insert buttons in the Teams interfaces on right click to add a user to hide, show currently hidden users
