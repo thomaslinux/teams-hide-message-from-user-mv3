@@ -13,16 +13,23 @@ Made with [help](prompt.txt) from [perplexity.ai](https://perplexity.ai)
 ## V0 - Alpha
 
 - [x] add / remove a user to hide
-- [x] enable / disable hiding of a user
+- [-] enable / disable hiding of a user (work only for individual messages)
 - [x] hide / show only my messages
 - [x] add / remove a background image (better for darkmode)
+
+## V0.5 - Correct selector
+
+- [ ] Message selected with
+  - ( ) Author of the message information as an innerText (javascript)
+  - ( ) the author id in a span (css)
 
 ## V1 - Initial release
 
 - [ ] Same Firefox and Chrome options.html (renaming the options.html values and .js correspondances)
 - [ ] alias name for the background URL
 - [ ] checkbox, show content on hover
-## V2 - 
+
+## V2 -
 
 - [ ] Teams like theme (https://microsoft.github.io/app-camp/aad/A03-after-apply-styling/)
 
