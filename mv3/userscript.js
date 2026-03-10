@@ -62,10 +62,7 @@ if (target) {
           console.log("span.innerText", span.innerText);
           console.log("span.classList", span.classList);
           if (span.innerText == userToHide) {
-            console.log("usertohide : ", userToHide);
-            if (!span.classList.contains("hideThatUserMessage")) {
-              span.classList.add("hideThatUserMessage");
-            }
+            span.style.display = "none";
           }
         });
     }
