@@ -45,9 +45,9 @@ document
 //   console.log('event change on the element');
 // })
 
-const userToHide = "user";
+const usersToHide = ["user1", "user2"];
 
-// listen changes on the DOM
+// Listen for changes on the DOM
 const target = document.querySelector(
   'div[data-tid="message-pane-list-runway"]',
 );
@@ -55,14 +55,25 @@ const target = document.querySelector(
 if (target) {
   const observer = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
-      console.log("DOM changed:", mutation);
       document
         .querySelectorAll("span[data-tid*=message-author-name]")
         .forEach((span) => {
-          console.log("span.innerText", span.innerText);
-          console.log("span.classList", span.classList);
-          if (span.innerText == userToHide) {
-            span.style.display = "none";
+          const authorName = span.innerText.trim();
+
+          if (usersToHide.includes(authorName)) {
+            // Find the closest chat message container
+            const chatMessageDiv = span.closest(
+              'div[class*="fui-ChatMessage"]',
+            );
+            if (chatMessageDiv) {
+              // Target the message body inside
+              const messageBody = chatMessageDiv.querySelector(
+                'div[id*="message-body"] div',
+              );
+              if (messageBody) {
+                messageBody.style.display = "none";
+              }
+            }
           }
         });
     }
