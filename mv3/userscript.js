@@ -51,19 +51,24 @@ const target = document.querySelector(
 );
 
 if (target) {
-  const observer = new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      console.log("DOM changed:", mutation);
-      // Example: react only to text/HTML changes
-      if (mutation.type === "childList" || mutation.type === "characterData") {
-        console.log("HTML changed on the element or its children");
-      }
-    }
+  const observer = new MutationObserver(() => {
+    document
+      .querySelectorAll("span[data-tid*=message-author-name]")
+      .forEach((span) => {
+        if (span.textContent.includes("FAMILYNAME")) {
+          const msgBody = span.closest(
+            'div[class*="fui-ChatMessage"] div[id*=message-body] div',
+          );
+          if (msgBody && !msgBody.classList.contains("hideThatUserMessage")) {
+            msgBody.classList.add("hideThatUserMessage");
+          }
+        }
+      });
   });
 
   observer.observe(target, {
-    childList: true, // added/removed nodes
-    characterData: true, // text changes
-    subtree: true, // watch descendants too
+    childList: true,
+    subtree: true,
+    characterData: true,
   });
 }
