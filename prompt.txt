@@ -58,6 +58,3 @@ default URLs to add :
  https://wallpaperaccess.com/full/8779679.jpg
 
 if functions are too long, extract in separate functions.
-
-wrap td of FAMILYNAME in a label for the hide checkbox
-wrap background td of URL in a label for the USE Radio
